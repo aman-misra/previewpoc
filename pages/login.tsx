@@ -4,10 +4,10 @@ import React from "react";
 
 const login = () => {
   return (
-    <div>
+    <>
       <MetaTags calledFrom="login" />
       <SignIn />
-    </div>
+    </>
   );
 };
 
