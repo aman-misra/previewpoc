@@ -5,7 +5,7 @@ import React from "react";
 const login = () => {
   return (
     <>
-      <MetaTags calledFrom="login" />
+      <MetaTags calledFrom="loginPage" />
       <SignIn />
     </>
   );
