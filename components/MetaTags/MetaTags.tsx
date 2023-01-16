@@ -6,7 +6,7 @@ const MetaTags = ({ calledFrom }: any) => {
 
   return (
     <>
-      {calledFrom == "homePage" ? (
+      {/* {calledFrom == "homePage" ? (
         <Head>
           <title>Home - Preview POC</title>
           <meta
@@ -35,7 +35,7 @@ const MetaTags = ({ calledFrom }: any) => {
         </Head>
       ) : (
         ""
-      )}
+      )} */}
       {calledFrom == "loginPage" ? (
         <Head>
           <title>Login - Preview POC</title>
