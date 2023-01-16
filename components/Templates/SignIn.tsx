@@ -59,7 +59,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign in the website to avail features
           </Typography>
           <Box
             component="form"

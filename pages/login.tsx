@@ -15,10 +15,15 @@ const login = () => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fav_icon.png" />
+        <link rel="canonical" href="https://previewpoc.vercel.app/login" />
         <meta
           name="title"
           property="og:title"
           content="Preview POC title login"
+        />
+        <meta
+          property="og:description"
+          content="POC preview description login page"
         />
         <meta property="og:type" content="Next js website deployed on vercel" />
         <meta
@@ -26,7 +31,7 @@ const login = () => {
           property="og:image"
           content="https://learning.shine.com/_next/image?url=https%3A%2F%2Fstatic1.shine.com%2Fl%2Fm%2Fimages%2Fblog%2FBody_Language.jpg&w=1200&q=75"
         />
-        <meta property="og:url" content="https://previewpoc.vercel.app/" />
+        <meta property="og:url" content="https://previewpoc.vercel.app/login" />
         <meta name="author" content="Aman Misra"></meta>
         <meta
           name="publish_date"
