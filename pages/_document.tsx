@@ -12,7 +12,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-        <title>Preview POC</title>
+        
       </Head>
       <body>
         <Main />
