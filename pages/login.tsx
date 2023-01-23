@@ -8,8 +8,8 @@ const login = () => {
   return (
     <>
       <MetaTags calledFrom="loginPage" />
-      {/* <SignIn /> */}
-      <Box
+      <div style={{ backgroundColor: "#0A1929" }} >
+        <Box
           sx={{
             marginTop: 8,
             display: "flex",
@@ -17,8 +17,9 @@ const login = () => {
             alignItems: "center",
           }}
         >
-      <Profile />
-      </Box>
+          <Profile />
+        </Box>
+      </div>
     </>
   );
 };

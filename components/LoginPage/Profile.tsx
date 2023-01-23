@@ -1,11 +1,12 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import SignIn from "../Templates/SignIn";
 import LoginButton from "./LoginButton"
 
 export default function Profile() {
     const { data: session } = useSession()
 
     console.log(session, 'loggedinData');
-    
+
     if (session) {
         return (
             <>
@@ -20,6 +21,7 @@ export default function Profile() {
             Not signed in <br />
 
             <LoginButton />
+            <SignIn />
         </>
     )
 }
