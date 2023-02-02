@@ -12,8 +12,6 @@ const SharePost = ({ session }: any) => {
       headers: {
         "Content-Type": "X-Restli-Protocol-Version: 2.0.0",
         Authorization: `Bearer ${session.accessToken}`,
-        "cache-control": "no-cache",
-        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         author: "urn:li:person:tM_C8HyeBm",
