@@ -1,19 +1,18 @@
-
 import Header from "@/components/common/Header/Header";
 import LoginButton from "@/components/LoginPage/LoginButton";
 import MetaTags from "@/components/MetaTags/MetaTags";
 import SignIn from "@/components/Templates/SignIn";
 import AirplayIcon from "@mui/icons-material/Airplay";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
 import { Box } from "@mui/material";
 import SharePost from "@/components/HomePage/SharePost";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
   // console.log(session, 'session');
 
-  const [accessToken, setAccessToken] = useState<any>()
+  const [accessToken, setAccessToken] = useState<any>();
   // console.log(accessToken, 'accessToken');
   // console.log(session?.accessToken, 'session accessToken');
 
@@ -55,10 +54,11 @@ export default function Home() {
           <SharePost session={session} />
         </Box>
       </>
-    )
+    );
   }
   return (
     <>
+      <MetaTags calledFrom="homePage" />
       <Header />
       <Box
         sx={{
@@ -68,14 +68,12 @@ export default function Home() {
           alignItems: "center",
         }}
       >
-
         Not signed in <br />
         <LoginButton />
       </Box>
     </>
-  )
+  );
 }
-
 
 // export async function getServerSideProps() {
 
