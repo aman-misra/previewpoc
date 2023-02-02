@@ -2,8 +2,6 @@ import Head from "next/head";
 import React from "react";
 
 const DetailsPage = ({ imagePath }: any) => {
-  const imageUrl = imagePath;
-
   return (
     <Head>
       <title>DetailsPage - Preview POC</title>

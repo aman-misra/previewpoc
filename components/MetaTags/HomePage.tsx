@@ -18,11 +18,7 @@ const HomePage = () => {
         content="POC preview description home page"
       />
       <meta property="og:type" content="website" />
-      <meta
-        name="image"
-        property="og:image"
-        content="https://learning.shine.com/_next/image?url=https%3A%2F%2Fstatic1.shine.com%2Fl%2Fm%2Fimages%2Fblog%2FRecession-Proof_Your_Resume.jpg&w=1200&q=75"
-      />
+      <meta name="image" property="og:image" content="/images/image-two.jpg" />
       <meta property="og:url" content="https://previewpoc.vercel.app/" />
       <meta name="author" content="Aman Misra"></meta>
       <meta
