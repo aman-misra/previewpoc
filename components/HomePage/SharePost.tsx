@@ -12,6 +12,7 @@ const SharePost = ({ session }: any) => {
       headers: {
         "X-Restli-Protocol-Version": ": 2.0.0",
         Authorization: `Bearer ${session.accessToken}`,
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         author: "urn:li:person:tM_C8HyeBm",
