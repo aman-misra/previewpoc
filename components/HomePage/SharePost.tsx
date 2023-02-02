@@ -10,7 +10,7 @@ const SharePost = ({ session }: any) => {
     let res = await fetch(`https://api.linkedin.com/v2/ugcPosts`, {
       method: "POST",
       headers: {
-        "Content-Type": "X-Restli-Protocol-Version: 2.0.0",
+        "X-Restli-Protocol-Version": ": 2.0.0",
         Authorization: `Bearer ${session.accessToken}`,
       },
       body: JSON.stringify({
