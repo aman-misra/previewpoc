@@ -17,8 +17,8 @@ export default async function handler(
       method: "POST",
       headers: {
         "X-Restli-Protocol-Version": ": 2.0.0",
-        Authorization: `Bearer ${req.body.bearer_token}`,
-        // Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        // Authorization: `Bearer ${req.body.bearer_token}`,
+        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
       },
       body: JSON.stringify({
         author: "urn:li:person:tM_C8HyeBm",
