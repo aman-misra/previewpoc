@@ -7,6 +7,9 @@ const SharePost = ({ session }: any) => {
   const shareClicked = async () => {
     let res = await fetch("/api/linkedin/test", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
       body: JSON.stringify({
         bearer_token: session.accessToken,
       }),

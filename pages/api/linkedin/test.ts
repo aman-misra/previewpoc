@@ -10,15 +10,16 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   // console.log(req.body);
-  console.log(process.env.ACCESS_TOKEN);
+  // console.log(process.env.ACCESS_TOKEN);
 
   if (req.method == "POST") {
     const response = await fetch(`https://api.linkedin.com/v2/ugcPosts`, {
       method: "POST",
       headers: {
         "X-Restli-Protocol-Version": ": 2.0.0",
-        // Authorization: `Bearer ${req.body.bearer_token}`,
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${req.body.bearer_token}`,
+        // Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
       },
       body: JSON.stringify({
         author: "urn:li:person:tM_C8HyeBm",
@@ -36,13 +37,15 @@ export default async function handler(
         },
       }),
     });
-    // console.log(response);
-    // console.log(response.headers);
+    console.log(response);
+    console.log(response.headers);
 
     if (response.status != 201) {
-      res
-        .status(response.status)
-        .json({ state: response.status, statusText: response.statusText });
+      res.status(response.status).json({
+        state: response.status,
+        statusText: response.statusText,
+        headers: response.headers,
+      });
     } else {
       res.status(200).json({ name: "Yayyy!!!! successfull" });
     }

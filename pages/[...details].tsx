@@ -2,7 +2,7 @@ import MetaTags from "@/components/MetaTags/MetaTags";
 import React, { useEffect, useState } from "react";
 
 const Details = ({ imagePath }: any) => {
-  console.log(imagePath);
+  // console.log(imagePath);
 
   return (
     <>
