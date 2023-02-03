@@ -10,31 +10,6 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const { data: session } = useSession();
-  // console.log(session, 'session');
-
-  const [accessToken, setAccessToken] = useState<any>();
-  // console.log(accessToken, 'accessToken');
-  // console.log(session?.accessToken, 'session accessToken');
-
-  // useEffect(() => {
-  //   if (session?.accessToken) {
-  //     setAccessToken(session?.accessToken)
-  //   }
-  //   const fetchUserInfo = async () => {
-  //     let res = await fetch(`https://api.linkedin.com/v2/userinfo`, {
-  //       method: "GET",
-  //       headers: { Authentication: `Bearer {${session?.accessToken}}` }
-  //     });
-  //     res = await res.json();
-  //     console.log(res, 'res user');
-  //   }
-  //   if (session?.accessToken) {
-  //     fetchUserInfo()
-  //     console.log('inside');
-
-  //   }
-
-  // }, [session?.accessToken])
 
   if (session) {
     return (
