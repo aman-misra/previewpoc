@@ -3,7 +3,8 @@ import React, { useState } from "react";
 
 const Linkedin = () => {
   const [signinUrl, setSigninUrl] = useState("");
-  const [accessUrl, setAccessUrl] = useState("");
+  const [sharePost, setSharePost] = useState(false);
+
   const route = useRouter();
   console.log(route.query);
   const clicked = async () => {
@@ -29,11 +30,15 @@ const Linkedin = () => {
         "Content-Type": "application/json",
       },
     });
-    res = await res.json();
-    console.log(res, "res");
-    if (res.newUrl) {
-      setAccessUrl(res.newUrl);
+    let result = await res.json();
+    console.log(result, "result");
+    if (result.access_token) {
+      setSharePost(true);
     }
+  };
+
+  const sharePostClicked = () => {
+    
   };
 
   return (
@@ -45,7 +50,11 @@ const Linkedin = () => {
       {route.query.code && (
         <button onClick={getAccessClicked}>Get Access Token</button>
       )}
-      {accessUrl && <a href={accessUrl}>Open Access Popup</a>}
+      <hr />
+      <hr />
+      {sharePost && (
+        <button onClick={sharePostClicked}>Share Post on Linkedin</button>
+      )}
     </div>
   );
 };

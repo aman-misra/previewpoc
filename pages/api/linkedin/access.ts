@@ -40,21 +40,22 @@ export default async function handler(
     // console.log(formBody);
 
     const response = await fetch(
-      `https://www.linkedin.com/oauth/v2/accessToken?code=${code}&grant_type=authorization_code&client_id=${process.env.LINKEDIN_CLIENT_ID}&client_secret=${process.env.LINKEDIN_CLIENT_SECRET}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flinkedin`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "x-www-form-urlencoded",
-        },
-      }
+      `https://www.linkedin.com/oauth/v2/accessToken?code=${code}&grant_type=authorization_code&client_id=${process.env.LINKEDIN_CLIENT_ID}&client_secret=${process.env.LINKEDIN_CLIENT_SECRET}&redirect_uri=http://localhost:3000/linkedin`
+      // {
+      //   method: "GET",
+      // headers: {
+      //   "Content-Type": "x-www-form-urlencoded",
+      // },
+      // }
     );
-    // console.log(response);
-    // console.log(response.headers);
+    let result = await response.json();
+    console.log(result);
+    let { access_token, expires_in } = result;
+    console.log(access_token);
+    console.log(expires_in);
 
     res.status(response.status).json({
-      state: response.status,
-      statusText: response.statusText,
-      newUrl: response.url,
+      result,
     });
   } else {
     res.status(200).json({ name: "John Doe" });
