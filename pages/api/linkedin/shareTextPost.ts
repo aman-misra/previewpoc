@@ -9,20 +9,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  // console.log(req.body);
-  // console.log(process.env.ACCESS_TOKEN);
-
   if (req.method == "POST") {
     const response = await fetch(`https://api.linkedin.com/v2/ugcPosts`, {
       method: "POST",
       headers: {
-        "X-Restli-Protocol-Version": ": 2.0.0",
-        "Content-Type": "application/x-www-form-urlencoded",
         Authorization: `Bearer ${req.body.bearer_token}`,
-        // Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        "X-Restli-Protocol-Version": "2.0.0",
+        // "Content-Type": "application/x-www-form-urlencoded",
       },
       body: JSON.stringify({
-        author: "urn:li:person:tM_C8HyeBm",
+        author: `urn:li:person:${req.body.userId}`,
         lifecycleState: "PUBLISHED",
         specificContent: {
           "com.linkedin.ugc.ShareContent": {
@@ -37,32 +33,18 @@ export default async function handler(
         },
       }),
     });
-    console.log(response);
-    console.log(response.headers);
+
+    let result = await response.json();
+
+    console.log(result, "result");
 
     if (response.status != 201) {
       res.status(response.status).json({
-        state: response.status,
-        statusText: response.statusText,
-        headers: response.headers,
+        result,
       });
     } else {
       res.status(200).json({ name: "Yayyy!!!! successfull" });
     }
-    // apiCall
-    //   .then((data) => {
-    //     console.log(data, "data then");
-    //     res.status(200).json({
-    //       name: `You submitted the following data: ${req.body} with response ${data}`,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err, "err catch");
-    //     console.log(err, "err catch");
-    //     res.status(200).json({
-    //       name: `You got the error : ${err}`,
-    //     });
-    //   });
   } else {
     res.status(200).json({ name: "John Doe" });
   }
