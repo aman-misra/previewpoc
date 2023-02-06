@@ -80,9 +80,7 @@ async function handlePostFormReq(req: any, res: any) {
         headers: {
           Authorization: `Bearer ${fields.bearer_token}`,
         },
-        body: fileFromSync(
-          "/home/sysadmin/Om/Personal/previewpoc/public/images/image-one.jpg"
-        ),
+        body: fileFromSync("public/images/image-one.jpg"),
       });
 
       console.log(imageUpload, "------imageUpload----");
@@ -154,9 +152,7 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   if (req.method == "POST") {
-    let formResponse = await handlePostFormReq(req, res);
-
-    console.log(formResponse, "formResponse");
+    await handlePostFormReq(req, res);
   } else {
     res.status(404).send("method not found");
   }
