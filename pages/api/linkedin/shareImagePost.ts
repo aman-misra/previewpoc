@@ -64,7 +64,7 @@ async function handlePostFormReq(req: any, res: any) {
       );
 
       const imageRegisterResponse: any = await imageRegister.json();
-      // console.log(imageRegisterResponse, "imageRegisterResponse");
+      console.log(imageRegisterResponse, "imageRegisterResponse");
 
       const imageUploadUrl =
         imageRegisterResponse.value.uploadMechanism[
@@ -73,7 +73,9 @@ async function handlePostFormReq(req: any, res: any) {
 
       const imageAsset = imageRegisterResponse.value.asset;
 
-      await fetch(imageUploadUrl, {
+      console.log(imageAsset, "------imageAsset----");
+
+      const imageUpload = await fetch(imageUploadUrl, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${fields.bearer_token}`,
@@ -82,6 +84,8 @@ async function handlePostFormReq(req: any, res: any) {
           "/home/sysadmin/Om/Personal/previewpoc/public/images/image-one.jpg"
         ),
       });
+
+      console.log(imageUpload, "------imageUpload----");
 
       const response = await fetch(`https://api.linkedin.com/v2/ugcPosts`, {
         method: "POST",
