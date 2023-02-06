@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import "styles/globals.css";
 import type { AppProps } from "next/app";
-// import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
@@ -30,11 +30,11 @@ export default function App({
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* <SessionProvider session={session}> */}
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        {/* </SessionProvider> */}
+        <SessionProvider session={session}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SessionProvider>
       </ThemeProvider>
     </>
   );
