@@ -6,7 +6,7 @@ const Linkedin = () => {
   const [sharePost, setSharePost] = useState(false);
 
   const [accessToken, setAccessToken] = useState("");
-  const [userId, setUserId] = useState();
+  const [userId, setUserId] = useState("");
 
   const route = useRouter();
   console.log(route.query);
@@ -59,6 +59,51 @@ const Linkedin = () => {
     });
   };
 
+  const shareImagePostClicked = async () => {
+    console.log("shareImagePostClicked");
+    fetch("/home/sysadmin/Om/Personal/previewpoc/public/images/image-two.jpg")
+      .then((res) => res.blob())
+      .then(async (blob) => {
+        const file = new File([blob], "capture.jpg", {
+          type: "image/jpg",
+        });
+
+        const formData = new FormData();
+        formData.append("bearer_token", accessToken);
+        formData.append("userId", userId);
+        formData.append("image", file);
+        let res = await fetch("/api/linkedin/shareImagePost", {
+          method: "POST",
+          body: formData,
+        });
+
+        let result = await res.json();
+        console.log(result, "result");
+      });
+  };
+
+  // const fileUploadClicked = async () => {
+  //   fetch("/home/sysadmin/Om/Personal/previewpoc/public/images/image-two.jpg")
+  //     .then((res) => res.blob())
+  //     .then(async (blob) => {
+  //       const file = new File([blob], "capture.jpg", {
+  //         type: "image/jpg",
+  //       });
+
+  //       const formData = new FormData();
+  //       // formData.append("name", "Aman Misra");
+  //       formData.append("image", file);
+  //       let res = await fetch("/api/linkedin/image", {
+  //         method: "POST",
+  //         body: formData,
+  //         // headers: { "Content-Type": "multipart/form-data  boundary=MyBoundary" },
+  //       });
+
+  //       let result = await res.json();
+  //       console.log(result, "result");
+  //     });
+  // };
+
   return (
     <div
       style={{
@@ -79,9 +124,16 @@ const Linkedin = () => {
       {route.query.code && (
         <button onClick={getAccessClicked}>Get Access Token</button>
       )}
-      {sharePost && (
+      {/* {sharePost && (
         <button onClick={sharePostClicked}>Share Post on Linkedin</button>
+      )} */}
+      {sharePost && (
+        <button onClick={shareImagePostClicked}>
+          Share Image Post on Linkedin
+        </button>
       )}
+
+      {/* <button onClick={fileUploadClicked}>File upload check api</button> */}
     </div>
   );
 };
