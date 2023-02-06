@@ -14,7 +14,7 @@ export default async function handler(
   if (req.method == "POST") {
     let result;
     const response = await fetch(
-      `https://www.linkedin.com/oauth/v2/accessToken?code=${code}&grant_type=authorization_code&client_id=${process.env.LINKEDIN_CLIENT_ID}&client_secret=${process.env.LINKEDIN_CLIENT_SECRET}&redirect_uri=http://localhost:3000/linkedin`
+      `https://www.linkedin.com/oauth/v2/accessToken?code=${code}&grant_type=authorization_code&client_id=${process.env.LINKEDIN_CLIENT_ID}&client_secret=${process.env.LINKEDIN_CLIENT_SECRET}&redirect_uri=${process.env.LINKEDIN_REDIRECT}`
     );
     if (response.ok) result = await response.json();
     let { access_token, expires_in } = result;

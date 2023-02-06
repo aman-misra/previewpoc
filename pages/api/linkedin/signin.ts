@@ -12,13 +12,10 @@ export default async function handler(
 ) {
   if (req.method == "GET") {
     const response = await fetch(
-      `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.LINKEDIN_CLIENT_ID}&redirect_uri=http://localhost:3000/linkedin&state=foobar&scope=r_liteprofile%20r_emailaddress%20w_member_social`
+      `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.LINKEDIN_REDIRECT}&state=foobar&scope=r_liteprofile%20r_emailaddress%20w_member_social`
     );
     // console.log(response);
     // console.log(response.headers);
-
-
-    
 
     res.status(response.status).json({
       state: response.status,
